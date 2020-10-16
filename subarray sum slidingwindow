@@ -1,0 +1,35 @@
+
+#include <stdio.h>
+
+int main()
+{
+    int n;
+     printf("Enter the size:");
+     scanf("%d",&n);
+     int arr[n];
+     printf("\nEnter the values:");
+     for(int i=0;i<n;i++)
+     {
+         scanf("%d",&arr[i]);
+     }
+     int sum;
+     printf("\nEnter the sum:");
+     scanf("%d",&sum);
+     int low = 0,high = 0,windowsum=0;
+     for(low = 0;low<n;low++)
+     {
+         while(windowsum<sum && high<n)
+         {
+             windowsum = windowsum+arr[high];
+             high++;
+         }
+         if(windowsum==sum)
+         {
+             printf("\nStarting:%d Endingpos:%d",low,high-1);
+             return 0;
+         }
+         windowsum = windowsum-arr[low];
+     }
+printf("\nThere is no such sum");
+    return 0;
+}
