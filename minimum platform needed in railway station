@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+int main()
+{
+    int arr[] = {900, 940};
+    int dep[] =  {910, 1200}; 
+    int n;
+    n = sizeof(arr)/sizeof(arr[0]);
+    
+sort(dep,n); //sort the depature and arrival in asscending order,arrival is already sorted
+minplatform(arr,dep,n);
+    return 0;
+}
+void sort(int dep[],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        for(int j=i+1;j<n;j++)
+        {
+            if(dep[j]<dep[i])
+            {
+                int temp = dep[j];
+                dep[j] = dep[i];
+                dep[i] = temp;
+            }
+        }
+    }
+}
+void minplatform(int arr[],int dep[],int n)
+{
+    int i=1,j=0,platform=1,max=0; //i = 1 because default there will be a platform
+    while(i<n && j<n)
+    {
+        if(arr[i]<=dep[j]) //arrival < depature there will ba train so we need platform
+        {
+            platform++;
+            i++;
+        }
+        if(arr[i]>dep[j]) //arrival > depature no train no platform
+        {
+            platform--;
+            j++;
+        }
+        if(max<platform) //keep a track on max platform
+        {
+            max = platform;
+        }
+    }
+    printf("The min platform:%d",max);
+}
