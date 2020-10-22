@@ -1,0 +1,23 @@
+input:aabbbccc
+output:abc
+
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    char str[]="aabbbceeeefffffkkk";
+    int len = strlen(str);
+  char alpha[len];
+  int j=0;
+  alpha[0]=str[0];
+  for(int i=1;i<len;i++)
+  {
+      if(str[i]!=alpha[j])
+      {
+          j++;
+          alpha[j]=str[i];
+      }
+  }
+  printf("%s",alpha);
+    return 0;
+}
