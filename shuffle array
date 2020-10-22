@@ -1,0 +1,28 @@
+using rand()
+
+#include <stdio.h>
+
+int main()
+{
+    int arr[]={1,2,3,4,5,6,7,8,9};
+    int len;
+    len = sizeof(arr)/sizeof(arr[0]);
+    for(int i=0;i<len;i++)
+    {
+        int j = rand()%(i+1);
+        swap(arr,i,j);
+    }
+for(int i=0;i<len;i++)
+{
+    printf("%d ",arr[i]);
+}
+    return 0;
+}
+void swap(int arr[],int i,int j)
+{
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+o/p: 3 6 2 7 8 1 9 4 5
