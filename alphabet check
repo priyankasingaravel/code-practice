@@ -1,0 +1,51 @@
+Question:
+Check whether all english alphabets are present in the given sentence or not
+
+I/P: abc defGhi JklmnOP QRStuv wxyz
+O/P: True
+
+I/P: abc defGhi JklmnOP QRStuv
+O/P: False
+
+
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    char str[] = "aBCDE Fghij KLM nopQ rstuvwxyZ";
+    int len = strlen(str);
+    printf("%d",len);
+ char large = 'A';
+ char small = 'a';
+ int i = 0;
+ int k=0;
+ while(i<len)
+ {
+     if(str[i]==' ')
+     {
+         i++;
+     }
+     if(str[i]==large || str[i]==small)
+     {
+         large++;
+         small++;
+         i++;
+         k++;
+     }
+     else
+     {
+        printf("no");
+        return 0;
+     }
+ }
+ printf("%d",k);
+ if(k==26)
+ {
+     printf("yes");
+ }
+ else
+ {
+     printf("no");
+ }
+    return 0;
+}
