@@ -1,0 +1,70 @@
+Given a 6 blocks, of different height h1, …, h6 . Make 2 towers using 3 Blocks for each tower in desired height h1, h2. Print the blocks to be used in ascending order
+
+Input:
+
+1 2 5 4 3  6
+
+height of tower: 6 15
+
+Output :
+
+1 2 3 & 4 5 6
+
+
+
+#include <stdio.h>
+
+int main()
+{
+    int r;
+    printf("Enter the size:");
+    scanf("%d",&r);
+    int arr[]={1,2,3,4,5,6};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int data[r];
+    int arrindex = 0;
+    int dataindex = 0;
+    int sum;
+    printf("\nEnter sum:");
+    scanf("%d",&sum);
+    combination(arr,n,r,arrindex,data,dataindex,sum);
+
+    return 0;
+}
+void combination(int arr[],int n,int r,int arrindex,int data[],int dataindex,int sum)
+{
+    if(dataindex==r && totalsum(data,r,sum)==1)
+    {
+        for(int i=0;i<r;i++)
+        {
+            printf("%d ",data[i]);
+        }
+        printf("\n");
+        return;
+    }
+    if(arrindex>=n)
+    {
+        return;
+    }
+    data[dataindex]=arr[arrindex];
+    combination(arr,n,r,arrindex+1,data,dataindex+1,sum); // current is included, put next at next location 
+    combination(arr,n,r,arrindex+1,data,dataindex,sum);// current is excluded, replace it with next 
+}
+
+
+int totalsum(int data[],int k,int sum)
+{
+    int grand=0;
+    for(int i=0;i<k;i++)
+    {
+        grand=grand+data[i];
+    }
+    if(sum==grand)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
