@@ -1,0 +1,41 @@
+n=9
+n*n=81
+8+1=9
+then n is kaprekar number
+
+
+
+
+#include <stdio.h>
+#include <math.h>
+int main()
+{
+    long int p,q;
+    int flag =0;
+    printf("Enter the range:");
+    scanf("%ld %ld",&p,&q);
+    for(long int i = p;i<=q;i++)
+    {
+        long int sum = 0;
+        long int k=i;
+        long int count = 0;
+        while(k>0)  //to find number of zero need to split the number
+        {
+            k = k/10;
+            count++;
+        }
+        long int square = i*i;
+        long int g = pow(10,count); 
+         sum = square/g + square%g; //split number into two
+        if(sum==i)
+        {
+            printf("%ld ",sum);
+            flag = 1;
+        }
+    }
+if(flag==0)
+{
+    printf("Invalid range");
+}
+    return 0;
+}
