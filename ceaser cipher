@@ -1,0 +1,31 @@
+formula:(x+n)%26
+n = shift
+upper: x=(x+k-65)%26+65;
+lower:x=(x+k-97)%26+97
+
+char* caesarCipher(char* s, int k) {
+int len = strlen(s);
+for(int i=0;i<len;i++)
+{
+    if(!isalpha(s[i]))
+    {
+        continue;
+    }
+    
+    
+    
+        if(isupper(s[i]))
+        {
+          s[i]=(s[i]+k-65)%26+65;
+           continue;
+        }
+        if(islower(s[i]))
+        {
+          s[i]=(s[i]+k-97)%26+97;  
+        }
+        
+    
+    
+}
+return s;
+}
