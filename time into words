@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+int main()
+
+{
+    char s[100]="12:45:54PM";
+    
+    int h1 = (int)s[0]-'0';
+    int h2 = (int)s[1]-'0';
+    int hh = (h1*10+h2);
+   int i;
+    int len = strlen(s);
+    char res[len];
+    if(s[8]=='A')
+    {
+        if(hh==12)
+        {
+       res[0]='0';
+       res[1]='0';
+       for( i=2;i<=7;i++)
+       {
+           res[i] = s[i];
+       }
+        } 
+        else
+        {
+            for(int i=0;i<=7;i++)
+    {
+        res[i] = s[i];
+    }
+        }
+    }
+    int hh1,one,two;
+    if(s[8]=='P')
+    {
+        if(hh<=12)
+        {
+         hh1 = hh+12;
+          one = hh1/10;
+          two =hh1%10;
+         res[0]=one+'0';
+         res[1]=two+'0';
+        for(i =2;i<=7;i++)
+        {
+            res[i] = s[i];
+        }
+    }
+    if(hh==12)
+    {
+      one = hh/10;
+          two =hh%10;
+         res[0]=one+'0';
+         res[1]=two+'0';
+        for(i =2;i<=7;i++)
+        {
+            res[i] = s[i];
+        }  
+    }
+    }
+
+printf("%s",res);
+    return 0;
+}
